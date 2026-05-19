@@ -1,0 +1,1 @@
+#dosya adı boyutu chunk size burda yönetilicek
