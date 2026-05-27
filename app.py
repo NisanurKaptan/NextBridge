@@ -8,7 +8,7 @@ from app.networking.server import P2PServer
 from app.networking.client import P2PClient
 
 def main():
-    print("--- NEXTBRIDGE P2P NODE ---")
+    print("--- NEXTBRIDGE ---")
     try:
         my_port = int(input("Enter your own listening port: "))
     except ValueError:
@@ -31,7 +31,22 @@ def main():
         except ValueError:
             print("Invalid port.")
 
-    print("\n[Sistem] Ready! Type a message and press Enter. To exit, type 'exit'.\n")
+    print("\n[System] Ready! Type a message and press Enter. To exit, type 'exit'.\n")
+    print("[System] To send a file, type: /file FILE_PATH")
+    while True:
+        try:
+            msg = input("> ").strip()
+            if msg.lower() == 'exit':
+                break
+            
+            if msg.startswith("/file "):
+                file_path = msg.replace("/file ", "").strip()
+                client.send_file(file_path)
+            elif msg:
+                client.send_chat_message(msg)
+                
+        except KeyboardInterrupt:
+            break
     while True:
         try:
             msg = input("> ")
