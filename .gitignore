@@ -216,3 +216,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Files received at runtime
+received_files/
+!received_files/.gitkeep
